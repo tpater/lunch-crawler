@@ -1,6 +1,7 @@
 const requestPromise = require('request-promise')
 const moment = require('moment')
 const cheerio = require('cheerio')
+const helpers = require('../helpers/helpers')
 
 const transform = (body) => cheerio.load(body)
 
@@ -56,10 +57,23 @@ const getFreshMenu = () => {
     .catch(e => console.log(`Error calling ${options.uri}: `, e))
 }
 
+const getZieloneTarasyMenu = () => {
+  const options = {
+    uri: 'https://www.zielone-tarasy.eu/'
+  }
+
+  return requestPromise(options)
+    .then(data => {
+      console.log(helpers.getPublicModel(data))
+    })
+    .catch(e => console.log(`Error calling ${options.uri}: `, e))
+}
+
 const getMenus = () => {
   return Promise.all([
     getFreshMenu(),
-    getAwokadoMenu()
+    getAwokadoMenu(),
+    getZieloneTarasyMenu()
   ])
 }
 
