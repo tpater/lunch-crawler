@@ -2,4 +2,20 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Obadaj co do szamania dziś: #{today}
+
+  h2 Awokado Menu:
+  div DANIA:
+    ul
+      for item in menus[1]
+        li= item
+
+  h2 Fresh Menu:
+  div ZUPY:
+    ul
+      for soup in menus[0].soups
+        li= soup
+  div DRUGIE:
+    ul
+      for dish in menus[0].mainDishes
+        li= dish
