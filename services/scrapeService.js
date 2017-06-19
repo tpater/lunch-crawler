@@ -68,6 +68,9 @@ const getZieloneTarasyMenu = () => {
     })
     .then(pageObj => {
       let page = JSON.parse(pageObj)
+
+      console.log(page['data']['document_data']['c2pd']['text'].split(/\r?\n/))
+
       return page['data']['document_data']['c2pd']['text']
     })
     .catch(e => console.log(`Error calling ${options.uri}: `, e))
