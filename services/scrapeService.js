@@ -64,7 +64,12 @@ const getZieloneTarasyMenu = () => {
 
   return requestPromise(options)
     .then(data => {
-      console.log(helpers.getPublicModel(data))
+      return helpers.getZieloneTarasyPageObj(data)
+    })
+    .then(pageObj => {
+      let page = JSON.parse(pageObj)
+
+      console.log(page['data']['document_data']['c2pd']['text'])
     })
     .catch(e => console.log(`Error calling ${options.uri}: `, e))
 }
