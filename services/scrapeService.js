@@ -1,7 +1,8 @@
 const requestPromise = require('request-promise')
 const moment = require('moment')
 const cheerio = require('cheerio')
-const zieloneTarasyService = require('./zieloneTarasyService')
+const ztService = require('./zieloneTarasyService')
+const helpers = require('../helpers/helpers')
 
 const transform = (body) => cheerio.load(body)
 
@@ -64,14 +65,22 @@ const getZieloneTarasyMenu = () => {
 
   return requestPromise(options)
     .then(data => {
-      return zieloneTarasyService.getZieloneTarasyPageObj(data)
+      return ztService.getZieloneTarasyPageObj(data)
     })
     .then(pageObj => {
-      let page = JSON.parse(pageObj)
+      let pageHTML = JSON.parse(pageObj)['data']['document_data']['c2pd']['text']
+      let $ = cheerio.load(pageHTML)
+      let nodesArray = []
+      let nodes = $('p').contents()
 
-      console.log(page['data']['document_data']['c2pd']['text'].split(/\r?\n/))
+      //  make an array from objects
+      for (let node in nodes) {
+        if (nodes.hasOwnProperty(node) && typeof nodes[node].data !== 'function' && nodes[node].data) {
+          nodesArray.push(nodes[node].data)
+        }
+      }
 
-      return page['data']['document_data']['c2pd']['text']
+      return helpers.buildMenu(nodesArray)
     })
     .catch(e => console.log(`Error calling ${options.uri}: `, e))
 }
