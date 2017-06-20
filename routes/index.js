@@ -1,8 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
+const scrapeService = require('../services/scrapeService')
+const moment = require('moment')
 
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
-});
+router.get('/', (req, res) => {
+  scrapeService.getMenus().then(menus => {
+    res.render('index', {
+      title: 'Lunch w okolicy REGENT OFFICE',
+      today: moment().format('DD.MM.YYYY'),
+      menus
+    })
+  })
+})
 
-module.exports = router;
+module.exports = router
