@@ -2,12 +2,13 @@
   "name": "oto-crawler",
   "version": "0.0.0",
   "private": true,
+  "main": "www.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./bin/www --exec babel-node --inspect",
+    "serve": "nodemon ./bin/www --exec babel-node --inspect",
     "clean": "rimraf dist/",
     "build": "npm run clean && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,yarn.lock --copy-files",
-    "serve": "node dist/bin/www"
+    "start": "node dist/bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
