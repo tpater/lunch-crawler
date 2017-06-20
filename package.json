@@ -8,7 +8,7 @@
     "serve": "nodemon ./bin/www --exec babel-node --inspect",
     "clean": "rimraf dist/",
     "build": "npm run clean && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,yarn.lock --copy-files",
-    "start": "node dist/bin/www"
+    "start": "node bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
