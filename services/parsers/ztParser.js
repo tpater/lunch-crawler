@@ -10,6 +10,7 @@ const ztParser = $ => {
       const tagMap = [
         '<p class="font_8" style="text-align: center;">',
         '</p>',
+        'amp;',
         '<span class="wixGuard">​</span></p>'
       ]
       const re = new RegExp(tagMap.join('|'), 'g')

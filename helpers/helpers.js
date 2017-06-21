@@ -5,8 +5,8 @@ const getPublicModelObj = (data) => {
 
 const buildTarasyMenu = (html) => {
   return [
-    html.substring(html.indexOf('VEGE'), html.indexOf('M&amp;B')),
-    html.substring(html.indexOf('M&amp;B'), html.indexOf('TRZECI')),
+    html.substring(html.indexOf('VEGE'), html.indexOf('M&B')),
+    html.substring(html.indexOf('M&B'), html.indexOf('TRZECI')),
     html.substring(html.indexOf('TRZECI'))
   ]
 }
