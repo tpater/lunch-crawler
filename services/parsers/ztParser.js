@@ -7,17 +7,20 @@ const ztParser = $ => {
     .then(pageObj => {
       const menuObj = JSON.parse(pageObj)
       const menuHTML = menuObj['data']['document_data']['c2pd']['text']
-      const tagMap = [
-        '<p class="font_8" style="text-align: center;">',
-        '</p>',
-        'amp;',
-        '<span class="wixGuard">​</span></p>'
-      ]
-      const re = new RegExp(tagMap.join('|'), 'g')
-      const strippedHTML = menuHTML.replace(re, '').replace(/\r?\n|\r/g, ' ')
 
-      return helpers.buildTarasyMenu(strippedHTML)
+      return helpers.buildTarasyMenu(stripHTML(menuHTML))
     })
+}
+
+const stripHTML = html => {
+  const tagMap = [
+    '<p class="font_8" style="text-align: center;">',
+    '</p>',
+    'amp;',
+    '<span class="wixGuard">​</span></p>'
+  ]
+  const re = new RegExp(tagMap.join('|'), 'g')
+  return html.replace(re, '').replace(/\r?\n|\r/g, ' ')
 }
 
 module.exports = ztParser
