@@ -1,24 +1,21 @@
 const helpers = require('../../helpers/helpers')
-const cheerio = require('cheerio')
 const ztService = require('../zieloneTarasyService')
 
 const ztParser = $ => {
   const page = $.html()
   return ztService.getZieloneTarasyPageObj(page)
     .then(pageObj => {
-      let pageHTML = JSON.parse(pageObj)['data']['document_data']['c2pd']['text']
-      let $ = cheerio.load(pageHTML)
-      let nodesArray = []
-      let nodes = $('p').contents()
+      const menuObj = JSON.parse(pageObj)
+      const menuHTML = menuObj['data']['document_data']['c2pd']['text']
+      const tagMap = [
+        '<p class="font_8" style="text-align: center;">',
+        '</p>',
+        '<span class="wixGuard">​</span></p>'
+      ]
+      const re = new RegExp(tagMap.join('|'), 'g')
+      const strippedHTML = menuHTML.replace(re, '').replace(/\r?\n|\r/g, ' ')
 
-      //  make an array from objects
-      for (let node in nodes) {
-        if (nodes.hasOwnProperty(node) && typeof nodes[node].data !== 'function' && nodes[node].data) {
-          nodesArray.push(nodes[node].data)
-        }
-      }
-
-      return helpers.buildMenu(nodesArray)
+      return helpers.buildTarasyMenu(strippedHTML)
     })
 }
 
