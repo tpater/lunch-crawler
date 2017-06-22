@@ -9,8 +9,8 @@
     "pretest": "npm run clean:coverage && npm run lint",
     "test": "istanbul cover tape '**/*.spec.*' | tap-spec",
     "serve": "nodemon ./app/bin/www --exec babel-node --inspect",
-    "clean": "rimraf dist/",
-    "build": "npm run clean && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,yarn.lock --copy-files",
+    "clean:dist": "rimraf dist/",
+    "build": "npm run clean:dist && babel ./app --out-dir dist/ --copy-files",
     "start": "node app/bin/www"
   },
   "dependencies": {
