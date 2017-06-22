@@ -7,4 +7,6 @@ const sanitizeText = (text) => {
 
 const isFirstOrLastElement = (el, index, arr) => index > 0 && index < arr.length - 1
 
-module.exports = {sanitizeText, isFirstOrLastElement}
+const filterOutFirstAndLast = (arr) => arr.filter(isFirstOrLastElement)
+
+module.exports = {sanitizeText, filterOutFirstAndLast}

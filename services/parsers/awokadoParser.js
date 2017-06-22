@@ -12,7 +12,11 @@ const awokadoParser = $ => {
     throw new Error(`Site structure changed, review parsing strategy for ${PARSER_NAME}`)
   }
   //  get rid of 1st(breakfast menu) and last element (other stuff menu)
-  tabContents = tabContents.filter(parserHelper.isFirstOrLastElement)
+  tabContents = parserHelper.filterOutFirstAndLast(tabContents)
+  if (tabContents.length !== 5) {
+    throw new Error(`${PARSER_NAME} should be able to fetch menu for the whole week,
+     instead it has ${tabContents.length} items`)
+  }
   const dow = moment().isoWeekday()
   if (dow > 5) {
     return NO_LUNCH_MESSAGE
