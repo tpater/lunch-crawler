@@ -4,7 +4,8 @@
   "private": true,
   "main": "www.js",
   "scripts": {
-    "test": "standard",
+    "lint": "standard",
+    "test": "npm run lint && tape '**/*.spec.*' | tap-spec",
     "serve": "nodemon ./bin/www --exec babel-node --inspect",
     "clean": "rimraf dist/",
     "build": "npm run clean && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,yarn.lock --copy-files",
@@ -29,6 +30,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "nodemon": "^1.11.0",
     "rimraf": "^2.6.1",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
   }
 }

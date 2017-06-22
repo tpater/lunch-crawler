@@ -4,13 +4,14 @@ const scrapeService = require('../services/scrapeService')
 const moment = require('moment')
 
 router.get('/', (req, res) => {
-  scrapeService.getMenus().then(menus => {
-    res.render('index', {
-      title: 'Lunch w okolicy REGENT OFFICE',
-      today: moment().format('DD.MM.YYYY'),
-      menus
+  scrapeService.getMenus()
+    .then(menus => {
+      res.render('index', {
+        title: 'Lunch w okolicy REGENT OFFICE',
+        today: moment().format('DD.MM.YYYY'),
+        menus
+      })
     })
-  })
 })
 
 module.exports = router
