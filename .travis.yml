@@ -1,4 +1,5 @@
 language: node_jsn
 node_js:
+  - "node"
   - "6"
 cache: yarn
