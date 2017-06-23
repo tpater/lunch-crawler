@@ -1,0 +1,3 @@
+instrumentation:
+  root: ./app
+  excludes: ["**/*.spec.js", "*.jade", "**/public/**"]
