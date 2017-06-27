@@ -6,17 +6,21 @@ const co = require('co')
  *
  * @param uri
  * @param pageTitle
- * @returns {*}
+ * @returns {Promise}
  */
 const crawlWix = (uri, pageTitle) => {
   const options = {uri}
+
+  if (!uri && !pageTitle) {
+    console.error('No uri or pageTitle')
+  }
 
   return co(function * () {
     const wixPage = yield requestPromise(options)
     const wixPageObj = getPublicModelObj(wixPage)
     const jsonUrl = findPageJSON(wixPageObj, pageTitle)
-    return requestPromise({uri: jsonUrl})
-  })
+    return yield requestPromise({uri: jsonUrl})
+  }).catch(error => console.error(error.stack))
 }
 
 /***
