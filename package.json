@@ -2,7 +2,7 @@
   "name": "lunch-crawler",
   "version": "0.0.1",
   "private": true,
-  "main": "app/bin/www.js",
+  "main": "www.js",
   "scripts": {
     "lint": "standard",
     "clean:coverage": "rimraf coverage/",
@@ -36,6 +36,7 @@
     "rimraf": "^2.6.1",
     "standard": "^10.0.2",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "uglify-js": "^3.0.20"
   }
 }
