@@ -8,7 +8,7 @@ const co = require('co')
  * @param pageTitle
  * @returns {Promise}
  */
-const crawlWix = (uri, pageTitle) => {
+const crawl = (uri, pageTitle) => {
   const options = {uri}
 
   if (!uri && !pageTitle) {
@@ -51,5 +51,5 @@ const getPublicModelObj = (data) => {
 }
 
 module.exports = {
-  crawlWix
+  crawl
 }

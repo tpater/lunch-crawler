@@ -1,12 +1,13 @@
 const wixCrawler = require('../wixCrawler')
 
 const ztParser = $ => {
-  return wixCrawler.crawlWix('https://www.zielone-tarasy.eu/', 'aktualności').then(pageObj => {
-    const menuObj = JSON.parse(pageObj)
-    const menuHTML = menuObj['data']['document_data']['c2pd']['text']
+  return wixCrawler.crawl('https://www.zielone-tarasy.eu/', 'aktualności')
+    .then(pageObj => {
+      const menuObj = JSON.parse(pageObj)
+      const menuHTML = menuObj['data']['document_data']['c2pd']['text']
 
-    return buildTarasyMenu(stripHTML(menuHTML))
-  })
+      return buildTarasyMenu(stripHTML(menuHTML))
+    })
 }
 
 const stripHTML = html => {
