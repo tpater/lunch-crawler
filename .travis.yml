@@ -1,5 +1,10 @@
 language: node_js
 node_js:
-  - "node"
-  - "6"
+- node
+- '6'
 cache: yarn
+deploy:
+  provider: heroku
+  api_key:
+    secure: qgHZVgoeq2JyKWsP9RFuQMdU4g0gPfJNQae36DB4Fpud2rR9iFdPrrYDys5kP7f3435jUwzZm14IwqpxxULURhjx7tXswv+65Sjp1pSNkPjBSOj8wf82veUZ6vSGiVJze0SN9wwpUZ8dzXRUK19GjLlt7CBPsGIv6ZL5Dh3TIQQ+TOqD60jCejtNjsOIZnKd/4nCpJCErJL8j+27W6fLWH+SnNKz8FoiYnMOWdYl0K0xUSI1F1TM9iYUEt5403WnRQsQUqJLRGA/rsm7WEB9Ny/xxEmJDg4Lww5lePdhWUEJcdUByTblUo2t0Ld+07Bq/x929d1/NBWgzLmGFJcIYlBQ741Wtf54IjzQiPyL+QumENVHPBtz+OlnIWU+GkI2G08FYfz+wGwfstht17HEudX2azl/1jMFoCRh3WZDQdNJziRStFWsCSK4vLNj/7surVmLx/8EmyPVL+D5tQOJRriSgHMdHpC0n36EJcNZoRZoUBm/qsgCSgVL1l7xYgqJsKdWKMly4NnIvRYJxSGLQqU85EbeNPgb7Ekv9vkhSYtbKS6zoyXF85LgBgr4K1wDhr/Qbz9htktscWkf0e/DAilW2HNGc0iND1MDdEUFh1U/rMJoO9OufPqsK514Y2OwzjhtVC9TrWDYmxrEV0Dym1WyAV44XpX1TzqjrYayW3Q=
+  app: lunch-crawler
