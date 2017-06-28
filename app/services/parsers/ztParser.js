@@ -1,24 +1,17 @@
+const striptags = require('striptags')
 const wixCrawler = require('../wixCrawler')
+const Entities = require('html-entities').AllHtmlEntities
+const entities = new Entities()
 
-const ztParser = $ => {
+const ztParser = () => {
   return wixCrawler.crawl('https://www.zielone-tarasy.eu/', 'aktualności')
     .then(pageObj => {
       const menuObj = JSON.parse(pageObj)
       const menuHTML = menuObj['data']['document_data']['c2pd']['text']
-
-      return buildTarasyMenu(stripHTML(menuHTML))
+      const plainText = striptags(menuHTML)
+      const decodedString = entities.decode(plainText)
+      return buildTarasyMenu(decodedString)
     })
-}
-
-const stripHTML = html => {
-  const tagMap = [
-    '<p class="font_8" style="text-align: center;">',
-    '</p>',
-    'amp;',
-    '<span class="wixGuard">​</span></p>'
-  ]
-  const re = new RegExp(tagMap.join('|'), 'g')
-  return html.replace(re, '').replace(/\r?\n|\r/g, ' ')
 }
 
 const buildTarasyMenu = (html) => {
