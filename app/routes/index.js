@@ -18,9 +18,7 @@ const fetchMenus = (res) => {
 
 //  TODO: Additional information
 const showWeekendInfo = (res) => {
-  res.render('weekend', {
-    message: 'Dzisiaj mamy weekend!'
-  })
+  res.render('weekend')
 }
 
 router.get('/', (req, res) => {
