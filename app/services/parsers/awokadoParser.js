@@ -4,7 +4,6 @@ const ParserError = require('../../errors/parserError')
 
 const PARSER_NAME = 'awokadoParser'
 const SELECTOR = '.responsive-tabs .tabcontent'
-const NO_LUNCH_MESSAGE = 'No lunch menu today. Sorry!'
 
 const awokadoParser = $ => {
   let tabContents = $(SELECTOR).toArray()
@@ -19,9 +18,6 @@ const awokadoParser = $ => {
      instead it has ${tabContents.length} items`)
   }
   const dow = moment().isoWeekday()
-  if (dow > 5) {
-    return NO_LUNCH_MESSAGE
-  }
   const text = $(tabContents[dow - 1]).text()
   return parserHelper.sanitizeText(text)
 }
