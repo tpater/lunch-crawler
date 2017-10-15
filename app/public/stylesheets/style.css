@@ -1,8 +1,60 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
 }
 
-a {
-  color: #00B7FF;
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: url('../images/background.png') no-repeat center center;
+    background-size: cover;
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgba(255, 255, 255, .5);
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.info-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.info-box-weekend {
+    margin-top: 50%;
+}
+
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+}
+
+.card {
+    margin-bottom: .5rem;
+    background: 0;
+}
+
+.card-body {
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.card-header {
+    background-color: rgba(255, 255, 255, .8)
+}
+

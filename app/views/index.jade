@@ -1,26 +1,26 @@
 extends layout
 
 block content
-    h1= title
-    p Obadaj co do szamania dziś: #{today}
-
-    h2 Awokado Menu:
-    div DANIA:
-        ul
-            for item in menus[1]
-                li= item
-
-    h2 Fresh Menu:
-    div ZUPY:
-        ul
-            for soup in menus[0].soups
-                li= soup
-    div DRUGIE:
-        ul
-            for dish in menus[0].mainDishes
-                li= dish
-    h2 Zielone Tarasy:
-    div
-        ul
-            for dish in menus[2]
-                li= dish
+    h2.info-box= title
+    p.info-box Obadaj co do szamania dziś: #{today}
+    .card
+        .card-header
+            | Awokado
+        .card-body
+            ul.list-group
+                for item in menus[0]
+                    li.list-group-item=item
+    .card
+        .card-header
+            | Fresh
+        .card-body
+            //  TODO: Create fresh scraper
+            ul.list-group
+                li.list-group-item.list-group-item-danger Not available right now :(
+    .card
+        .card-header
+            | Zielone Tarasy
+        .card-body
+            ul.list-group
+                for dish in menus[1]
+                     li.list-group-item= dish
