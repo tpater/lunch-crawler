@@ -7,7 +7,7 @@
     "lint": "standard",
     "clean:coverage": "rimraf coverage/",
     "pretest": "npm run clean:coverage && npm run lint",
-    "test": "istanbul cover tape '**/*.spec.*' | tap-spec",
+    "test": "istanbul cover tape './app/**/*.spec.*' | tap-spec",
     "serve": "nodemon ./app/bin/www --exec babel-node --inspect",
     "clean:dist": "rimraf dist/",
     "build": "npm run clean:dist && babel ./app --out-dir dist/ --copy-files",
