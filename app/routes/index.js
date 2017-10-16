@@ -3,7 +3,9 @@ const router = express.Router()
 const scrapeService = require('../services/scrapeService')
 const moment = require('moment')
 
-router.get('/', (req, res) => {
+const isWeekend = moment().isoWeekday() > 5
+
+const fetchMenus = (res) => {
   scrapeService.getMenus()
     .then(menus => {
       res.render('index', {
@@ -12,6 +14,19 @@ router.get('/', (req, res) => {
         menus
       })
     })
+}
+
+//  TODO: Additional information
+const showWeekendInfo = (res) => {
+  res.render('weekend')
+}
+
+router.get('/', (req, res) => {
+  if (isWeekend) {
+    showWeekendInfo(res)
+  } else {
+    fetchMenus(res)
+  }
 })
 
 module.exports = router
